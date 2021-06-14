@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ClientController {
     private final ClientService clientService;
 
-//    @GetMapping("{id}")
-//    public String getClient(@PathVariable Integer id, Model model){
-//        Client client = clientService.getById(id);
-//        model.addAttribute("client", client);
-//        return "user";
-//    }
+    @GetMapping("{id}")
+    public String getClient(@PathVariable Integer id, Model model){
+        Client client = clientService.getById(id);
+        model.addAttribute("client", client);
+        return "user";
+    }
 
 }
