@@ -17,11 +17,11 @@ import java.math.BigDecimal;
 @Table(name = "products")
 public class Product extends baseEntity {
 
-//    @NotBlank
+    @NotBlank
     @Size(min = 4)
     @Column(name ="name",length = 128)
     private String name;
-//    @NotBlank
+    @NotBlank
     @Size(min = 10)
     @Column(name ="description",length = 224)
     private String description;
@@ -30,13 +30,12 @@ public class Product extends baseEntity {
     @Column(name ="price")
     private BigDecimal price;
 
-    @PositiveOrZero
-//    @NotBlank
+    @NotBlank
     @PositiveOrZero
     @Column(name ="amount")
     private int amount;
 
-//    @NotBlank
+    @NotBlank
     @Column(name = "image")
     private String img;
 
