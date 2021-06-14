@@ -1,4 +1,4 @@
-use `shoponline`;
+use `shop`;
 insert into clients(address,email,name) values
 ('Бейкер-стрит, 221b','Sherlockgmail.com','Sherlock'),
 ('England, Hogwards','HarryPottergmail.com','Harry Potter');
