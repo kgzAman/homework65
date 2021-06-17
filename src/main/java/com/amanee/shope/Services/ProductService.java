@@ -22,17 +22,16 @@ public class ProductService {
     }
 
 
-
     public Page<Product> getWithFilter(FilterDTO filterDTO, Pageable pageable) {
         Page<Product> products = null;
         if(filterDTO.getName()!=null){
         products=this.productRepository.findAllByNameIsContaining(pageable,filterDTO.getName());
-        }
 
-//        if(filterDTO.getDescription()!=null){
-//            products=this.productRepository.findAllByDescriptionIsContaining(pageable,filterDTO.getDescription());
-//        }
-//
+        }
+        if(filterDTO.getDescription()!=null){
+        products=this.productRepository.findAllByDescriptionIsContaining(pageable,filterDTO.getDescription());
+
+        }
         BigDecimal minRange= BigDecimal.ZERO;
         BigDecimal maxRange=BigDecimal.valueOf(Long.MAX_VALUE);
 

@@ -7,7 +7,8 @@
 <body>
 <form action="/pro/filter" modelAttribute ="filter" method="get" >
         <input type="text" name="name" placeholder="поиск  по имени " style="margin-bottom: 10px" />
-        <input type="text" name="name" placeholder="поиск по описанию " style="margin-bottom: 10px" />
+    <br>
+        <input type="text" name="description" placeholder="поиск по описанию " style="margin-bottom: 10px" />
     <br>
         <input type="number" name="minPrice" placeholder="цена от " style="margin-bottom: 10px">
         <input type="number" name="maxPrice" placeholder="цена до " style="margin-bottom: 10px">
@@ -30,7 +31,7 @@
         </table>
     </div>
 </#list>
-      <a href="/pro/filter?page=${pages.getPageNumber()+1}&size=2">==></a>
+    <a href="/pro/filter?page=${pages.pageNumber+1}&size=2">==></a>
 </#if>
 
 </body>

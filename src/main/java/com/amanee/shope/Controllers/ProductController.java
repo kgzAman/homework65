@@ -33,17 +33,12 @@ public class ProductController {
         model.addAttribute("pages",products.getPageable());
         return "html/index";
     }
-  public String getByDescription(@PageableDefault(value = 2) Pageable pageable, Model model){
-        final Page<Product> products= productService.getProducts(pageable);
-        model.addAttribute("products",products.getContent());
-        model.addAttribute("pages",products.getPageable());
-        return "html/index";
-    }
 
     @GetMapping("/filter")
     public String filter(Model model,@ModelAttribute(name = "filter")FilterDTO filter,@PageableDefault(value = 2) Pageable pageable) {
+//
        final Page<Product> products=this.productService.getWithFilter(filter,pageable);
-       if(filter.getName()!=null) {
+       if(filter.getName()!=null || filter.getDescription()!=null||filter.getMaxPrice()!=null && filter.getMaxPrice()!=null) {
            model.addAttribute("products", products.stream()
                    .map(p -> mapper.map(p, ProductDTO.class))
                    .distinct()
@@ -51,13 +46,6 @@ public class ProductController {
            model.addAttribute("pages",products.getPageable());
        }
 
-       if(filter.getMaxPrice()!=null && filter.getMaxPrice()!=null){
-           model.addAttribute("products",
-                   products.stream()
-                           .map(p -> mapper.map(p, ProductDTO.class))
-                           .collect(Collectors.toList()));
-        model.addAttribute("pages",products.getPageable());
-       }
         return "html/filter";
     }
 
