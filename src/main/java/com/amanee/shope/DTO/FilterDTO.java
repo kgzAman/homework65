@@ -9,5 +9,6 @@ public class FilterDTO {
     private String name;
     private BigDecimal minPrice;
     private BigDecimal maxPrice;
+    private String description;
 
 }

@@ -14,5 +14,6 @@ import java.util.List;
 public interface ProductRepository  extends JpaRepository<Product,Integer> {
     Page<Product> findAll(Pageable pageable);
     Page<Product> findAllByNameIsContaining(Pageable pageable,String name);
+    Page<Product> findAllByDescriptionIsContaining(Pageable pageable,String description);
     Page<Product>findByPriceBetween(Pageable pageable,BigDecimal min,BigDecimal max);
 }

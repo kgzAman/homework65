@@ -33,6 +33,12 @@ public class ProductController {
         model.addAttribute("pages",products.getPageable());
         return "html/index";
     }
+  public String getByDescription(@PageableDefault(value = 2) Pageable pageable, Model model){
+        final Page<Product> products= productService.getProducts(pageable);
+        model.addAttribute("products",products.getContent());
+        model.addAttribute("pages",products.getPageable());
+        return "html/index";
+    }
 
     @GetMapping("/filter")
     public String filter(Model model,@ModelAttribute(name = "filter")FilterDTO filter,@PageableDefault(value = 2) Pageable pageable) {

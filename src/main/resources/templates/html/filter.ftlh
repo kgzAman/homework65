@@ -6,7 +6,8 @@
 </head>
 <body>
 <form action="/pro/filter" modelAttribute ="filter" method="get" >
-        <input type="text" name="name" placeholder="поис по имени " style="margin-bottom: 10px" />
+        <input type="text" name="name" placeholder="поиск  по имени " style="margin-bottom: 10px" />
+        <input type="text" name="name" placeholder="поиск по описанию " style="margin-bottom: 10px" />
     <br>
         <input type="number" name="minPrice" placeholder="цена от " style="margin-bottom: 10px">
         <input type="number" name="maxPrice" placeholder="цена до " style="margin-bottom: 10px">
