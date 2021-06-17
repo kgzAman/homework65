@@ -34,26 +34,26 @@ public class ProductController {
         return "html/index";
     }
 
-    @GetMapping("/filter")
-    public String filter(Model model,@ModelAttribute(name = "filter")FilterDTO filter,@PageableDefault(value = 2) Pageable pageable) {
+//    @GetMapping("/filter")
+//    public String filter(Model model,@ModelAttribute(name = "filter")FilterDTO filter,@PageableDefault(value = 2) Pageable pageable) {
+////
+//       final Page<Product> products=this.productService.getWithFilter(filter,pageable);
+//       if(filter.getName()!=null) {
+//           model.addAttribute("products", products.stream()
+//                   .map(p -> mapper.map(p, ProductDTO.class))
+//                   .distinct()
+//                   .collect(Collectors.toList()));
+//           model.addAttribute("pages",products.getPageable());
+//       }
 //
-       final Page<Product> products=this.productService.getWithFilter(filter,pageable);
-       if(filter.getName()!=null) {
-           model.addAttribute("products", products.stream()
-                   .map(p -> mapper.map(p, ProductDTO.class))
-                   .distinct()
-                   .collect(Collectors.toList()));
-           model.addAttribute("pages",products.getPageable());
-       }
-
-       if(filter.getMaxPrice()!=null && filter.getMaxPrice()!=null){
-           model.addAttribute("products",
-                   products.stream()
-                           .map(p -> mapper.map(p, ProductDTO.class))
-                           .collect(Collectors.toList()));
-        model.addAttribute("pages",products.getPageable());
-       }
-        return "html/filter";
-    }
+//       if(filter.getMaxPrice()!=null && filter.getMaxPrice()!=null){
+//           model.addAttribute("products",
+//                   products.stream()
+//                           .map(p -> mapper.map(p, ProductDTO.class))
+//                           .collect(Collectors.toList()));
+//        model.addAttribute("pages",products.getPageable());
+//       }
+//        return "html/filter";
+//    }
 
 }
