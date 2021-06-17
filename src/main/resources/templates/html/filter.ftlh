@@ -15,20 +15,20 @@
 </form >
 <#if products??>
 
-<#--<#list products as product>-->
-<#--    <div style="border: green 1px solid">-->
-<#--        <table border="1" width="100%" cellpadding="5">-->
-<#--            <tr>-->
-<#--                <th>Название :${product.name}</th>-->
-<#--                <th>Описание :${product.description}</th>-->
-<#--                <th>Количество:${product.amount}</th>-->
-<#--                <th>Количество:${product.price}</th>-->
+<#list products as product>
+    <div style="border: green 1px solid">
+        <table border="1" width="100%" cellpadding="5">
+            <tr>
+                <th>Название :${product.name}</th>
+                <th>Описание :${product.description}</th>
+                <th>Количество:${product.amount}</th>
+                <th>Количество:${product.price}</th>
 
-<#--            </tr>-->
+            </tr>
 
-<#--        </table>-->
-<#--    </div>-->
-<#--</#list>-->
+        </table>
+    </div>
+</#list>
       <a href="/pro/filter?page=${pages.getPageNumber()+1}&size=2">==></a>
 </#if>
 
