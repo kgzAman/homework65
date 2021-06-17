@@ -5,6 +5,7 @@ id integer not null auto_increment,
  address varchar(224),
  email varchar(255),
  name varchar(128),
+ password varchar(1000),
  primary key (id))
   engine=InnoDB;
 

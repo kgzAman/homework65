@@ -19,14 +19,14 @@ import java.util.List;
 @AllArgsConstructor
 @Table(name="orders")
 @Entity
-public class Order extends baseEntity {
+public class Order extends BaseEntity {
 
     @OneToMany
     private List<Product> products;
 
 
     @OneToOne
-    private Client client;
+    private User client;
     @DateTimeFormat
     private LocalTime localTime;
 }

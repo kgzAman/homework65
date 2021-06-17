@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Entity
 @Table(name = "products")
-public class Product extends baseEntity {
+public class Product extends BaseEntity {
 
     @NotBlank
     @Size(min = 4)

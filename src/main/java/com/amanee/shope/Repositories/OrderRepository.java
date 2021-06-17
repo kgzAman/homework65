@@ -2,9 +2,9 @@ package com.amanee.shope.Repositories;
 
 import com.amanee.shope.Entity.Order;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 
-@Controller
+@Repository
 public interface OrderRepository extends CrudRepository<Order,Integer> {
 
 }

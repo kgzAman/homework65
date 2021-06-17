@@ -1,41 +1,39 @@
 package com.amanee.shope.Controllers;
 
-import com.amanee.shope.Entity.Client;
-import com.amanee.shope.Repositories.ClientRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.amanee.shope.DTO.UserDTO;
+import com.amanee.shope.Entity.User;
+import com.amanee.shope.Repositories.UserRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/registration")
 public class MainController {
 
-    private final ClientRepository clientRepository;
+    private final UserRepository userRepository;
+    private final ModelMapper mapper= new ModelMapper();
 
-    public MainController(ClientRepository clientRepository) {
-        this.clientRepository = clientRepository;
+    public MainController(UserRepository clientRepository) {
+        this.userRepository = clientRepository;
     }
 
     @GetMapping("/registration_form")
     public String ShowRegistration(Model model){
-        Client client = new Client();
+        User client = new User();
         model.addAttribute("client",client);
         return "registration_form";
 
     }
 
-    @PostMapping("/save")
-    public String registration(@ModelAttribute @Valid Client client, BindingResult bindResult,Model model){
-        Client client1 = new Client(client.getName(),client.getAddress(),client.getEmail());
-        model.addAttribute(client1);
-        clientRepository.save(client1);
-        return "display_form";
+    @PostMapping("/add")
+    public String addClient(UserDTO clientDTO){
+        User client= new User(clientDTO.getName(),clientDTO.getAddress(),clientDTO.getEmail(),clientDTO.getPassword());
+        mapper.map(client, User.class);
+        userRepository.save(client);
+        return "html/user";
     }
 }
