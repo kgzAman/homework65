@@ -33,14 +33,14 @@ public class LoginController {
         return "profile";
     }
 //
-//    @GetMapping("/register")
-//    public String pageRegisterCustomer(Model model) {
-//        if (!model.containsAttribute("dto")) {
-//            model.addAttribute("dto", new UserRegisterForm());
-//        }
-//
-//        return "html/register";
-//    }
+    @GetMapping("/register")
+    public String pageRegisterCustomer(Model model) {
+        if (!model.containsAttribute("dto")) {
+            model.addAttribute("dto", new UserRegisterForm());
+        }
+
+        return "html/register";
+    }
 
     @PostMapping("/register")
     public String registerPage(@Valid UserRegisterForm customerRequestDto,
