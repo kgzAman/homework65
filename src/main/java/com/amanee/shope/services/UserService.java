@@ -23,31 +23,31 @@ public class UserService {
     private final UserRepository repository;
     private final PasswordEncoder encoder;
 
-//    public UserResponseDTO register(UserRegisterForm form) {
-//        if (repository.existsByEmail(form.getEmail())) {
-//            throw new UserAlreadyRegisteredException();
-//        }
-//
-//        var user = User.builder()
-//                .email(form.getEmail())
-//                .name(form.getName())
-//                .password(encoder.encode(form.getPassword()))
-//                .build();
-//
-//        repository.save(user);
-//
-//        return UserResponseDTO.from(user);
-//    }
-//
-//    public UserResponseDTO getByEmail(String email) {
-//        var user = repository.findByEmail(email)
-//                .orElseThrow(UserNotFoundException::new);
-//
-//        return UserResponseDTO.from(user);
-//    }
-//
-//    public void addUser(UserDTO userDTO){
-//
-//    }
+    public UserResponseDTO register(UserRegisterForm form) {
+        if (repository.existsByEmail(form.getEmail())) {
+            throw new UserAlreadyRegisteredException();
+        }
+
+        var user = User.builder()
+                .email(form.getEmail())
+                .name(form.getName())
+                .password(encoder.encode(form.getPassword()))
+                .build();
+
+        repository.save(user);
+
+        return UserResponseDTO.from(user);
+    }
+
+    public UserResponseDTO getByEmail(String email) {
+        var user = repository.findByEmail(email)
+                .orElseThrow(UserNotFoundException::new);
+
+        return UserResponseDTO.from(user);
+    }
+
+    public void addUser(UserDTO userDTO){
+
+    }
 
 }
