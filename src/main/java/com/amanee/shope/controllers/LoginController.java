@@ -23,15 +23,15 @@ import java.security.Principal;
 @AllArgsConstructor
 public class LoginController {
 
-//    private final UserService customerService;
-//
-//    @GetMapping("/profile")
-//    public String pageCustomerProfile(Model model, Principal principal)
-//    {
-//        var user = customerService.getByEmail(principal.getName());
-//        model.addAttribute("dto", user);
-//        return "profile";
-//    }
+    private final UserService customerService;
+
+    @GetMapping("/profile")
+    public String pageCustomerProfile(Model model, Principal principal)
+    {
+        var user = customerService.getByEmail(principal.getName());
+        model.addAttribute("dto", user);
+        return "profile";
+    }
 //
 //    @GetMapping("/register")
 //    public String pageRegisterCustomer(Model model) {
@@ -41,27 +41,27 @@ public class LoginController {
 //
 //        return "html/register";
 //    }
-//
-//    @PostMapping("/register")
-//    public String registerPage(@Valid UserRegisterForm customerRequestDto,
-//                               BindingResult validationResult,
-//                               RedirectAttributes attributes) {
-//        attributes.addFlashAttribute("dto", customerRequestDto);
-//
-//        if (validationResult.hasFieldErrors()) {
-//            attributes.addFlashAttribute("errors", validationResult.getFieldErrors());
-//            return "redirect:register";
-//        }
-//
-//        customerService.register(customerRequestDto);
-//        return "redirect:/login";
-//    }
-//
-//    @GetMapping("/login")
-//    public String loginPage(@RequestParam(required = false, defaultValue = "false") Boolean error, Model model) {
-//        model.addAttribute("error", error);
-//        return "html/login";
-//    }
+
+    @PostMapping("/register")
+    public String registerPage(@Valid UserRegisterForm customerRequestDto,
+                               BindingResult validationResult,
+                               RedirectAttributes attributes) {
+        attributes.addFlashAttribute("dto", customerRequestDto);
+
+        if (validationResult.hasFieldErrors()) {
+            attributes.addFlashAttribute("errors", validationResult.getFieldErrors());
+            return "redirect:register";
+        }
+
+        customerService.register(customerRequestDto);
+        return "redirect:/login";
+    }
+
+    @GetMapping("/login")
+    public String loginPage(@RequestParam(required = false, defaultValue = "false") Boolean error, Model model) {
+        model.addAttribute("error", error);
+        return "html/login";
+    }
 //    @RequestMapping(value="/logout", method = RequestMethod.POST)
 //    public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
 //        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
