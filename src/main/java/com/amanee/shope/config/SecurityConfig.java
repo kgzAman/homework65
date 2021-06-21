@@ -24,54 +24,54 @@ import javax.sql.DataSource;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final DataSource dataSource;
 
-//    @Bean
-//    public PasswordEncoder encoder() {
-//        return new BCryptPasswordEncoder();
-//    }
-//
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//
-//        http
-//                .csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
-//
-//        http.formLogin()
-//                .loginPage("/login")
-//                .failureUrl("/login?error=true")
-//                .defaultSuccessUrl("/pro/filter");
-//
-//        http.logout()
-//                .logoutUrl("/logout")
-//                .logoutSuccessUrl("/")
-//                .logoutRequestMatcher(new AntPathRequestMatcher("/logout","POST"))
-//                .clearAuthentication(true)
-//                .invalidateHttpSession(true)
-//                .deleteCookies("JSESSIONID")
-//                .logoutSuccessUrl("/login");
-//
-//        http.authorizeRequests()
-//                .antMatchers("/pro/**")
-//                .authenticated();
-//
-//
-//        http.authorizeRequests()
-//                .anyRequest()
-//                .permitAll();
-//    }
-//
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        String fetchUsersQuery = "select email, password, enabled"
-//                + " from clients"
-//                + " where email = ?";
-//
-//        String fetchRolesQuery = "select email, role"
-//                + " from clients"
-//                + " where email = ?";
-//
-//        auth.jdbcAuthentication()
-//                .usersByUsernameQuery(fetchUsersQuery)
-//                .authoritiesByUsernameQuery(fetchRolesQuery)
-//                .dataSource(dataSource);
-//    }
+    @Bean
+    public PasswordEncoder encoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+
+        http
+                .csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
+
+        http.formLogin()
+                .loginPage("/login")
+                .failureUrl("/login?error=true")
+                .defaultSuccessUrl("/pro/filter");
+
+        http.logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/")
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout","POST"))
+                .clearAuthentication(true)
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID")
+                .logoutSuccessUrl("/login");
+
+        http.authorizeRequests()
+                .antMatchers("/pro/**")
+                .authenticated();
+
+
+        http.authorizeRequests()
+                .anyRequest()
+                .permitAll();
+    }
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        String fetchUsersQuery = "select email, password, enabled"
+                + " from clients"
+                + " where email = ?";
+
+        String fetchRolesQuery = "select email, role"
+                + " from clients"
+                + " where email = ?";
+
+        auth.jdbcAuthentication()
+                .usersByUsernameQuery(fetchUsersQuery)
+                .authoritiesByUsernameQuery(fetchRolesQuery)
+                .dataSource(dataSource);
+    }
 }
