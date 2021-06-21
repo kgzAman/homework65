@@ -17,21 +17,35 @@
 </form >
 <#if products??>
 
-<#list products as product>
     <div style="border: green 1px solid">
         <table border="1" width="100%" cellpadding="5">
             <tr>
-                <th>Название :${product.name}</th>
-                <th>Описание :${product.description}</th>
-                <th>Количество:${product.amount}</th>
-                <th>Количество:${product.price}</th>
-
+                <th>Название </th>
+                <th>Описание </th>
+                <th>Количество</th>
+                <th>цена</th>
             </tr>
-
+            <#list products as product>
+                <tr>
+                    <th>${product.name}</th>
+                    <th>${product.description}</th>
+                    <th>${product.amount}</th>
+                    <th>${product.price}</th>
+                </tr>
+            </#list>
+            <br>
         </table>
     </div>
-</#list>
-    <a href="/pro/filter?page=${pages.pageNumber+1}&size=2">==></a>
+    <a href="/pro/products?page=${pages.pageNumber+1}&size=2">==></a>
+</#if>
+
+<#if _csrf??>
+    <form class="flex box-128" action="/logout" method="post">
+        <input type="hidden" name="${(_csrf.parameterName)!'csrf'}" value="${(_csrf.token)!'--no-token--'}"/>
+        <button class="flex box-128 logout-button">Выйти </button>
+    </form>
+<#else>
+    <a href="/logout">Выйти</a>
 </#if>
 
 </body>

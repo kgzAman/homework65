@@ -1,23 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <#list products as product>
-        <div style="border: green 1px solid">
-            <table border="1" width="100%" cellpadding="5">
-                <tr>
-                    <th>Название :${product.name}</th>
-                    <th>Описание :${product.description}</th>
-                    <th>Количество:${product.amount}</th>
-                </tr>
-            </table>
-        </div>
-    </#list>
-<a href="/pro/products?page=${pages.pageNumber+1}&size=2">==></a>
+<#-- импортируем основной шаблон-контейнер который содержит в себе разметку для основной структуры страницы -->
+<#import "partials/main.ftlh" as main />
 
+<#-- обрабатываем его, и передаём ему список скриптов, которые необходимо подключить-->
+<@main.renderWith>
 
-</body>
-</html>
+    <div class="flex flex-justify-content-center">
+        <a class="flex box-128" href="/register"> Регистрация </a>
+        <a class="flex box-128" href="/login"> Войти </a>
+        <a class="flex box-128" href="/profile"> Профиль </a>
+        <#if _csrf??>
+            <form class="flex box-128" action="/logout" method="post">
+                <input type="hidden" name="${(_csrf.parameterName)!'csrf'}" value="${(_csrf.token)!'--no-token--'}"/>
+                <button class="flex box-128 logout-button">Выйти </button>
+            </form>
+        <#else>
+            <a href="/logout">Выйти</a>
+        </#if>
+    </div>
+
+</@main.renderWith>
