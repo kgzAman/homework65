@@ -44,7 +44,6 @@ public class UserService {
     public User getByEmail(String email) {
         var user = repository.findByEmail(email)
                 .orElseThrow(NotFoundException::new);
-
         return user;
     }
 

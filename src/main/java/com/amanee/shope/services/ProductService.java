@@ -2,6 +2,7 @@ package com.amanee.shope.services;
 
 import com.amanee.shope.dto.FilterDTO;
 import com.amanee.shope.dto.ProductDTO;
+import com.amanee.shope.entity.Order;
 import com.amanee.shope.entity.Product;
 import com.amanee.shope.exeption.NotFoundException;
 import com.amanee.shope.repository.ProductRepository;
@@ -53,12 +54,9 @@ public class ProductService {
 
         return products;
     }
-//
-//    public Optional<Product> getByName(ProductDTO productDTO)  {
-//       Optional<Product> product=productRepository.findByName(productDTO.getName());
-//       product.orElseThrow(NotFoundException::new);
-//       return product;
-//    }
+    public Product getById(int orderFor) {
+        return productRepository.findById(orderFor).orElseThrow(NotFoundException::new);
+    }
 
 
 }

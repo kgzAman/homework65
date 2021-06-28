@@ -34,7 +34,14 @@
                         <input type="number"  id="amount" value="1">
                     </label>
                 </th>
+                <th>
+                    <form id="remove" action="/pro/remove" method="POST" hidden>
+                        <input  name="id" value="${item.id}" hidden>
+                    </form>
+                        <button id="add" type="submit" form="remove">удалить</button>
+                </th>
             </tr>
+
         </#list>
             </tr>
             </table>

@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -57,8 +58,19 @@ public class ProductController {
         return "html/cart";
     }
 
+//    @PostMapping("/remove")
+//    public String remove(@RequestParam Integer id, HttpSession sessionfrom) {
+//        if (sessionfrom != null) {
+//            try {
+//                var list = (List<Product>) sessionfrom.getAttribute(Constants.CART_ID);
+//                list.remove(productRepository.findById(id).get());
+//            } catch (ClassCastException ignored) { }
+//        }
+//        return "redirect:/pro/cart";
+//    }
+
     @PostMapping("/cart/add")
-    public String addToList(@RequestParam Integer id, HttpSession session, Model model) {
+    public String addToList(@RequestParam Integer id, HttpSession session) {
         if (session != null) {
             var attr = session.getAttribute(Constants.CART_ID);
             if (attr == null) {

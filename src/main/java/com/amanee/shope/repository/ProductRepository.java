@@ -17,5 +17,6 @@ public interface ProductRepository  extends JpaRepository<Product,Integer> {
     Page<Product> findAllByDescriptionIsContaining(Pageable pageable,String description);
     Page<Product>findByPriceBetween(Pageable pageable,BigDecimal min,BigDecimal max);
 
-    Optional<Product> findByName(String name);
+
+    Optional<Product> findById(Integer id);
 }
