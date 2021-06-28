@@ -63,10 +63,10 @@ public class UserController {
         return "redirect:/login";
     }
 
-//    @GetMapping("/forgot-password")
-//    public String getNewPassword(){
-//        return "html/password";
-//    }
+    @GetMapping("/forgot-password")
+    public String getNewPassword(){
+        return "html/password";
+    }
 
     @PostMapping("/resetPassword")
     public String getNewPassword(@ModelAttribute UserDTO userDTO, Model model){

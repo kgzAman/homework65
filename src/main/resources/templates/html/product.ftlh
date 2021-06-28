@@ -6,13 +6,13 @@
 </head>
 <body>
 
-<#--<#if _csrf??>-->
+<#if _csrf??>
     <form id="exit" class="flex box-128" action="/logout" method="post">
         <input type="hidden" name="${(_csrf.parameterName)!'csrf'}" value="${(_csrf.token)!'--no-token--'}"/>
     </form>
         <button type="submit" class="flex box-128 logout-button" form="exit">Выйти </button>
-<#--<#else>-->
-<#--</#if>-->
+<#else>
+</#if>
 
             <table border="1" width="100%" cellpadding="5">
                 <tr>
@@ -29,10 +29,13 @@
                     <th>${product.price}</th>
 
                     <th>
+                        <#if _csrf??>
                         <form id="Form1" action="/pro/cart/add" method="POST" hidden>
                                <input name="id" value="${product.id}" hidden>
                             <button id="add" type="submit" form="Form1" >Добавить в корзину</button>
                         </form>
+                        <#else>
+                        </#if>
 
             <button id="add" type="submit" form="Form1" >Добавить в корзину</button>
         </th>

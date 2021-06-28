@@ -5,6 +5,7 @@
     <title>Title</title>
 </head>
 <body>
+<#if _csrf??>
 
 <form action="/pro/filter" modelAttribute ="filter" method="get" >
         <input type="text" name="name" placeholder="поиск  по имени " style="margin-bottom: 10px" />
@@ -75,6 +76,7 @@
     // updateElement.addEventListener('click', addToCart);
 </script>
 
-
+<#else>
+</#if>
 </body>
 </html>
