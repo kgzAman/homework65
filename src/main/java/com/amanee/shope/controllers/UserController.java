@@ -68,17 +68,12 @@ public class UserController {
         return "html/password";
     }
 
-    @PostMapping("/resetPassword")
-    public String getNewPassword(@ModelAttribute UserDTO userDTO, Model model){
-            String password = customerService.getPassword(userDTO.getEmail());
-            model.addAttribute("password", password);
-
-        return "html/success";   }
-
-//    @GetMapping("/success")
-//    public String success(){
-//        return "html/success";
-//    }
-
+//    @PostMapping("/resetPassword")
+//    public String getNewPassword(@ModelAttribute UserDTO userDTO, Model model){
+//            String password = customerService.getPassword(userDTO.getEmail());
+//            model.addAttribute("password", password);
+//
+//        return "html/success";   }
+//
 
 }

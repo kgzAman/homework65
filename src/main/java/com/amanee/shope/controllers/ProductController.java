@@ -58,16 +58,16 @@ public class ProductController {
         return "html/cart";
     }
 
-//    @PostMapping("/remove")
-//    public String remove(@RequestParam Integer id, HttpSession sessionfrom) {
-//        if (sessionfrom != null) {
-//            try {
-//                var list = (List<Product>) sessionfrom.getAttribute(Constants.CART_ID);
-//                list.remove(productRepository.findById(id).get());
-//            } catch (ClassCastException ignored) { }
-//        }
-//        return "redirect:/pro/cart";
-//    }
+    @PostMapping("/remove")
+    public String remove(@RequestParam Integer id, HttpSession sessionfrom) {
+        if (sessionfrom != null) {
+            try {
+                var list = (List<Product>) sessionfrom.getAttribute(Constants.CART_ID);
+                list.remove(productRepository.findById(id).get());
+            } catch (ClassCastException ignored) { }
+        }
+        return "redirect:/pro/cart";
+    }
 
     @PostMapping("/cart/add")
     public String addToList(@RequestParam Integer id, HttpSession session) {
