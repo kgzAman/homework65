@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
-<#if _csrf??>
+
 <div class="container">
     <h1>Ваша корзина</h1>
         <#if items??>
@@ -35,12 +35,10 @@
                     </label>
                 </th>
                 <th>
-
                     <form id="remove" action="/pro/remove" method="POST" hidden>
                         <input  name="id" value="${item.id}" hidden>
                     </form>
                         <button id="add" type="submit" form="remove">удалить</button>
-
                 </th>
             </tr>
 
@@ -59,13 +57,12 @@
     </form>
 </div>
 <script>
-    let click = document.getElementById("click");
-    click.addEventListener("click",function plus (e) {
-        e.preventDefault();
-     // document.getElementById("amount").valueOf()+1;
-    })
+    // let click = document.getElementById("click");
+    // click.addEventListener("click",function plus (e) {
+    //     e.preventDefault();
+    //  // document.getElementById("amount").valueOf()+1;
+    // })
 </script>
-<#else>
-</#if>
+
 </body>
 </html>

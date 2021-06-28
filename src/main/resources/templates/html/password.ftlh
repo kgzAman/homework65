@@ -5,6 +5,7 @@
     <title>Title</title>
 </head>
 <body>
+
 <form  action="/resetPassword" modelattribute="UserDTO" method="POST">
     <input type="text" name="email" placeholder="введите email">
 <button type="submit" value="Submit">Submit</button>
