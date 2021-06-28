@@ -11,7 +11,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import javax.sql.DataSource;
@@ -33,30 +32,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http
-                .csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
-
-        http.formLogin()
-                .loginPage("/login")
+                .csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/forgot-password").permitAll()
+                .antMatchers("/resetPassword").permitAll()
+                .antMatchers("/register").permitAll()
+                .anyRequest()
+                .authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/login").permitAll()
                 .failureUrl("/login?error=true")
-                .defaultSuccessUrl("/pro/filter");
-
-        http.logout()
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/")
+                .defaultSuccessUrl("/mainPage")
+                .and()
+                .logout()
+                .logoutUrl("/logout").permitAll()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout","POST"))
                 .clearAuthentication(true)
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID")
                 .logoutSuccessUrl("/login");
-
-        http.authorizeRequests()
-                .antMatchers("/pro/**")
-                .authenticated();
-
-
-        http.authorizeRequests()
-                .anyRequest()
-                .permitAll();
     }
 
     @Override

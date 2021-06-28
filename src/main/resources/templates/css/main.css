@@ -8,65 +8,33 @@ html, body {
 }
 
 .container {
-    max-width: 1280px;
-    width: 1280px;
+    max-width: 800px;
+    width: 800px;
     margin: 0 auto;
 }
 
-.flex {
-    display: flex;
-}
-
-.flex-justify-content-center {
-    justify-content: center;
-}
-
-a {
-    text-decoration: none;
-    color:black;
-    text-transform: uppercase;
-}
-
-.box-128 {
-    flex-basis: 128px;
-    height: 128px;
+.border {
+    box-sizing: border-box;
+    padding: 5px;
     border: 1px solid black;
-    background-color: lightblue;
-    justify-content: center;
-    align-items: center;
-    margin: 5px;
-    padding: 10px;
-
 }
 
-.box-128:hover {
-    transition-duration: 0.3s;
-    transition-property: background-color;
-    background-color: darkblue;
-    color: white;
+.key-cell {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 30%;
+    overflow: hidden;
+    vertical-align: top;
+    text-align: right;
+    border-right: 2px solid black;
+    padding-right: 10px;
 }
 
-.label-input-text {
-    flex-basis: 200px;
-}
-
-.logout-button {
-    border: none;
-    background-color:transparent;
-    font-size: inherit;
-    text-transform: uppercase;
-    font-family: "DejaVu Sans", Arial, Helvetica, sans-serif;
-    color: black;
-}
-
-.bottom-box {
-    padding-top: 30px;
-    background-color: lightblue;
-}
-
-.bottom-box:hover {
-    transition-duration: 0.3s;
-    transition-property: background-color;
-    background-color: lightcyan;
-    color: white;
+.value-cell {
+    box-sizing: border-box;
+    display: inline-block;
+    /*width: 80%;*/
+    overflow: hidden;
+    vertical-align: top;
+    padding-left: 10px;
 }

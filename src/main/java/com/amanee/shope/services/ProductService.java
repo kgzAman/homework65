@@ -1,15 +1,19 @@
 package com.amanee.shope.services;
 
 import com.amanee.shope.dto.FilterDTO;
+import com.amanee.shope.dto.ProductDTO;
 import com.amanee.shope.entity.Product;
+import com.amanee.shope.exeption.NotFoundException;
 import com.amanee.shope.repository.ProductRepository;
 import lombok.Data;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.Optional;
 
 
 @Service
@@ -33,7 +37,6 @@ public class ProductService {
         Page<Product> products = null;
         if(filterDTO.getName()!=null){
         products=this.productRepository.findAllByNameIsContaining(pageable,filterDTO.getName());
-
         }
         if(filterDTO.getDescription()!=null){
         products=this.productRepository.findAllByDescriptionIsContaining(pageable,filterDTO.getDescription());
@@ -45,10 +48,17 @@ public class ProductService {
         if(filterDTO.getMinPrice()!=null && filterDTO.getMaxPrice()!=null){
         minRange=filterDTO.getMinPrice();
         maxRange= filterDTO.getMaxPrice();
-        products=this.productRepository.findByPriceBetween(pageable,minRange,filterDTO.getMaxPrice());
+        products=this.productRepository.findByPriceBetween(pageable,minRange,maxRange);
         }
 
         return products;
     }
+//
+//    public Optional<Product> getByName(ProductDTO productDTO)  {
+//       Optional<Product> product=productRepository.findByName(productDTO.getName());
+//       product.orElseThrow(NotFoundException::new);
+//       return product;
+//    }
+
 
 }

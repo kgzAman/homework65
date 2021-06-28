@@ -5,6 +5,7 @@
     <title>Title</title>
 </head>
 <body>
+
 <form action="/pro/filter" modelAttribute ="filter" method="get" >
         <input type="text" name="name" placeholder="поиск  по имени " style="margin-bottom: 10px" />
     <br>
@@ -15,8 +16,9 @@
     <button type="submit"> search</button>
 
 </form >
-<#if products??>
 
+
+<#if products??>
     <div style="border: green 1px solid">
         <table border="1" width="100%" cellpadding="5">
             <tr>
@@ -26,27 +28,53 @@
                 <th>цена</th>
             </tr>
             <#list products as product>
+                <div id="id">
                 <tr>
                     <th>${product.name}</th>
                     <th>${product.description}</th>
                     <th>${product.amount}</th>
                     <th>${product.price}</th>
+                    <th>
+                        <form action="/pro/cart/add" method="POST">
+                            <input name="id" value="${product.id}" hidden>
+
+                        <button type="submit"  >Добавить в корзину</button>
+                        </form>
+
+                    </th>
                 </tr>
+                </div>
             </#list>
             <br>
         </table>
     </div>
-    <a href="/pro/products?page=${pages.pageNumber+1}&size=2">==></a>
+    <a href="/pro/filter?page=${pages.pageNumber+1}">==></a>
 </#if>
 
-<#if _csrf??>
-    <form class="flex box-128" action="/logout" method="post">
-        <input type="hidden" name="${(_csrf.parameterName)!'csrf'}" value="${(_csrf.token)!'--no-token--'}"/>
-        <button class="flex box-128 logout-button">Выйти </button>
-    </form>
-<#else>
-    <a href="/logout">Выйти</a>
-</#if>
+
+<script>
+    // 'use strict';
+    //
+    //     const form = document.getElementById("cart-form");
+    //     form.addEventListener("click",addToCart)
+    // async function addToCart(e) {
+    //     e.preventDefault();
+    //     e.stopPropagation();
+    //     let elem = document.getElementById(id)
+    //
+    //     const options = {
+    //         method : 'post',
+    //         body: new FormData(elem)
+    //     };
+    //
+    //     await fetch("/cart", options);
+    //     // alert("обновите страницу для просмотра данных из сессии, или перейдите в корзину");
+    // }
+
+    // const updateElement = document.getElementById("cart-add");
+    // updateElement.addEventListener('click', addToCart);
+</script>
+
 
 </body>
 </html>

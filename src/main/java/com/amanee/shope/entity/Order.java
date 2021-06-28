@@ -1,32 +1,31 @@
 package com.amanee.shope.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalTime;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name="orders")
+@EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
 @Entity
 public class Order extends BaseEntity {
 
     @OneToMany
     private List<Product> products;
 
-
     @OneToOne
     private User client;
+
     @DateTimeFormat
     private LocalTime localTime;
+
+    @OneToMany(cascade = {CascadeType.ALL})
+    private List<Review> review;
 }
