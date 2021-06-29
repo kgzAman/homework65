@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 <body>
 
@@ -12,18 +13,16 @@
     </form>
         <button type="submit" class="flex box-128 logout-button" form="exit">Выйти </button>
 
-            <table border="1" width="100%" cellpadding="5">
-                <thead>
+            <table class="table table-striped table-dark">
                 <tr>
                     <th scope="col">Название </th>
                     <th scope="col">Описание </th>
                     <th scope="col">Количество</th>
                     <th scope="col">цена</th>
                 </tr>
-                </thead>
     <#list products as product>
-        <tbody>
                 <tr>
+
                     <th>${product.id}</th>
                     <th>${product.name}</th>
                     <th>${product.description}</th>
@@ -35,7 +34,6 @@
             <button id="add" type="submit" form="Form1" >Добавить в корзину</button>
         </th>
                 </tr>
-        </tbody>
     </#list>
             </table>
 

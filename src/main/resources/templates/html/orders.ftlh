@@ -13,18 +13,22 @@
 
             <#list order.products as orderProduct>
                 <table class="table table-striped table-dark">
+                    <thead>
                     <tr>
                         <th scope="col">названи</th>
                         <th scope="col">описание</th>
                         <th scope="col">цена</th>
                         <th scope="col">количество</th>
                     </tr>
+                    </thead>
+                    <tbody>
                     <tr>
                         <th>${orderProduct.name}</th>
                         <th>${orderProduct.description}</th>
                         <th>${orderProduct.price}</th>
                         <th>${orderProduct.amount}</th>
                     </tr>
+                    </tbody>
                 </table>
             </#list>
                         <th><button id="btn" style="margin-bottom: 2rem"> review </button></th>

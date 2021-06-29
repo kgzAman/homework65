@@ -8,6 +8,7 @@
 
 <table border="1" width="100%" cellpadding="5">
     <tr>
+
         <th  scope="col">Название </th>
         <th  scope="col">Описание </th>
         <th  scope="col">Количество</th>
