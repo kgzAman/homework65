@@ -9,60 +9,71 @@
     <title>Lesson 69. Storing data in session</title>
 
     <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 <body>
 
 <div class="container">
     <h1>Ваша корзина</h1>
         <#if items??>
-            <table border="1" width="100%" cellpadding="5">
-            <tr>
-                <th>Название </th>
-                <th>Описание </th>
-                <th>Тип товара</th>
-                <th>Цена</th>
-                <th>Количество</th>
-            </tr>
+            <table  class="table table-striped table-dark">
+                <thead>
+                    <tr>
+                        <th  scope="col">Название </th>
+                        <th  scope="col">Описание </th>
+                        <th  scope="col">Тип товара</th>
+                        <th  scope="col">Цена</th>
+                        <th  scope="col">количество</th>
+                    </tr>
+                <thead>
         <#list items as item>
-            <tr>
-                <th><p>${item.name}</p></th>
-                <th><p>${item.description}</p></th>
-                <th><p>${item.type}</p></th>
-                <th><p>${item.price}</p></th>
-                <th>
-                    <label>
-                        <input type="number"  id="amount" value="1">
-                    </label>
-                </th>
-                <th>
-                    <form id="remove" action="/pro/remove" method="POST" hidden>
-                        <input  name="id" value="${item.id}" hidden>
-                    </form>
-                        <button id="add" type="submit" form="remove">удалить</button>
-                </th>
-            </tr>
+                <tbody>
+                    <tr>
+                        <th scope="row"><p>${item.name}</p></th>
+                        <th><p>${item.description}</p></th>
+                        <th><p>${item.type}</p></th>
+                        <th><p>${item.price}</p></th>
+                        <th><input name="amount" type="number"  id="amount" value="1"></th>
 
+                            <form     id="remove" action="/pro/remove" method="POST" hidden>
+                                <input  name="id" value="${item.id}" hidden>
+                            </form>
+                        <th>
+                                <button id="add" type="submit" form="remove">удалить</button>
+                        </th>
+                    </tr>
+                <tbody>
         </#list>
-            </tr>
             </table>
-        <form action="/pro/cart/empty" method="post">
-            <button>Очистить корзину</button>
-        </form>
     <#else>
         <p>тут ничего нет!</p>
     </#if>
+        <form action="/orders/ordersFor" id="send" method="post" hidden>
+
+                <label>
+                    <input name="address" type="text" placeholder="введите адрес доставки">
+                    <input name="phone" type="text" placeholder="введите номер телефона">
+                </label>
+            <button type="submit">заказть</button>
+        </form>
+    <button id="order">Оформить заказ</button>
+
+    <a href="/bath" style="margin-bottom: 3rem">
+        <input type="button" value="Просмотреть историю карзины" />
+    </a>
 
     <form>
         <input type="button" value="назад" onclick="history.back()">
     </form>
-</div>
-<script>
-    // let click = document.getElementById("click");
-    // click.addEventListener("click",function plus (e) {
-    //     e.preventDefault();
-    //  // document.getElementById("amount").valueOf()+1;
-    // })
-</script>
 
+</div>
+
+<script>
+    let btn = document.getElementById("order");
+    btn.addEventListener("click",function (e) {
+        e.preventDefault()
+        document.getElementById("send").hidden = document.getElementById("send").hidden === false;
+    })
+</script>
 </body>
 </html>

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 <body>
 
@@ -20,15 +21,18 @@
 
 <#if products??>
     <div style="border: green 1px solid">
-        <table border="1" width="100%" cellpadding="5">
+        <table class="table table-striped table-dark">
+            <thead>
             <tr>
                 <th>Название </th>
                 <th>Описание </th>
                 <th>Количество</th>
                 <th>цена</th>
             </tr>
+            </thead>
             <#list products as product>
                 <div id="id">
+                    <tbody>
                 <tr>
                     <th>${product.name}</th>
                     <th>${product.description}</th>
@@ -43,6 +47,7 @@
 
                     </th>
                 </tr>
+                    </tbody>
                 </div>
             </#list>
             <br>
@@ -53,26 +58,7 @@
 
 
 <script>
-    // 'use strict';
-    //
-    //     const form = document.getElementById("cart-form");
-    //     form.addEventListener("click",addToCart)
-    // async function addToCart(e) {
-    //     e.preventDefault();
-    //     e.stopPropagation();
-    //     let elem = document.getElementById(id)
-    //
-    //     const options = {
-    //         method : 'post',
-    //         body: new FormData(elem)
-    //     };
-    //
-    //     await fetch("/cart", options);
-    //     // alert("обновите страницу для просмотра данных из сессии, или перейдите в корзину");
-    // }
 
-    // const updateElement = document.getElementById("cart-add");
-    // updateElement.addEventListener('click', addToCart);
 </script>
 
 

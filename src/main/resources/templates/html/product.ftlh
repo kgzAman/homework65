@@ -13,14 +13,18 @@
         <button type="submit" class="flex box-128 logout-button" form="exit">Выйти </button>
 
             <table border="1" width="100%" cellpadding="5">
+                <thead>
                 <tr>
-                    <th>Название </th>
-                    <th>Описание </th>
-                    <th>Количество</th>
-                    <th>цена</th>
+                    <th scope="col">Название </th>
+                    <th scope="col">Описание </th>
+                    <th scope="col">Количество</th>
+                    <th scope="col">цена</th>
                 </tr>
+                </thead>
     <#list products as product>
+        <tbody>
                 <tr>
+                    <th>${product.id}</th>
                     <th>${product.name}</th>
                     <th>${product.description}</th>
                     <th>${product.amount}</th>
@@ -31,6 +35,7 @@
             <button id="add" type="submit" form="Form1" >Добавить в корзину</button>
         </th>
                 </tr>
+        </tbody>
     </#list>
             </table>
 

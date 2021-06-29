@@ -16,4 +16,10 @@ public class OrderDTO {
 
     private LocalTime localTime;
 
+    private String address;
+
+    private String phone;
+
+    private String amount;
+
 }

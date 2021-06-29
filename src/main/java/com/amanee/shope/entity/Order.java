@@ -28,4 +28,8 @@ public class Order extends BaseEntity {
 
     @OneToMany(cascade = {CascadeType.ALL})
     private List<Review> review;
+
+    private String address;
+
+    private String phone;
 }

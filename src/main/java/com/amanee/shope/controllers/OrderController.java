@@ -1,5 +1,6 @@
 package com.amanee.shope.controllers;
 
+import com.amanee.shope.dto.OrderDTO;
 import com.amanee.shope.dto.ReviewsDTO;
 import com.amanee.shope.entity.Order;
 import com.amanee.shope.entity.Review;
@@ -15,10 +16,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 
@@ -57,6 +55,11 @@ public class OrderController {
         order.getReview().add(review);
         orderRepository.save(order);
         return "redirect:/orders";
+    }
+
+    @PostMapping("/ordersFor")
+    public void buyProducts(@RequestParam OrderDTO orderDTO){
+        OrderDTO orderDTO1 =orderDTO;
     }
 
 }

@@ -52,7 +52,7 @@ public class UserService {
     }
 
     public User getByName(String username) {
-        return repository.findByName(username).orElseThrow(NotFoundException::new);
+        return repository.findByEmail(username).orElseThrow(NotFoundException::new);
     }
 
 

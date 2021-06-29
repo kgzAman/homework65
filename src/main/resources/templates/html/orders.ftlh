@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 <body>
 
@@ -11,7 +12,13 @@
         <div id="product">
 
             <#list order.products as orderProduct>
-                <table border="1" width="100%" cellpadding="5">
+                <table class="table table-striped table-dark">
+                    <tr>
+                        <th scope="col">названи</th>
+                        <th scope="col">описание</th>
+                        <th scope="col">цена</th>
+                        <th scope="col">количество</th>
+                    </tr>
                     <tr>
                         <th>${orderProduct.name}</th>
                         <th>${orderProduct.description}</th>

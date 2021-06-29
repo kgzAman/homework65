@@ -2,8 +2,10 @@ package com.amanee.shope.controllers;
 
 import com.amanee.shope.dto.FilterDTO;
 import com.amanee.shope.dto.ProductDTO;
+import com.amanee.shope.entity.BathOrder;
 import com.amanee.shope.entity.Product;
 import com.amanee.shope.repository.ProductRepository;
+import com.amanee.shope.services.BathOrderService;
 import com.amanee.shope.services.ProductService;
 import lombok.Data;
 import org.modelmapper.ModelMapper;
@@ -25,6 +27,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/pro")
 public class ProductController {
     private final ProductService productService;
+    private final BathOrderService bathOrderService;
 
     private final ProductRepository productRepository;
     private final ModelMapper mapper= new ModelMapper();
@@ -59,18 +62,19 @@ public class ProductController {
     }
 
     @PostMapping("/remove")
-    public String remove(@RequestParam Integer id, HttpSession sessionfrom) {
+    public String remove(@RequestParam Integer id, HttpSession sessionfrom,Principal principal) {
         if (sessionfrom != null) {
             try {
                 var list = (List<Product>) sessionfrom.getAttribute(Constants.CART_ID);
                 list.remove(productRepository.findById(id).get());
+
             } catch (ClassCastException ignored) { }
         }
         return "redirect:/pro/cart";
     }
 
     @PostMapping("/cart/add")
-    public String addToList(@RequestParam Integer id, HttpSession session) {
+    public String addToList(@RequestParam Integer id, HttpSession session,Principal principal) {
         if (session != null) {
             var attr = session.getAttribute(Constants.CART_ID);
             if (attr == null) {
@@ -79,6 +83,10 @@ public class ProductController {
             try {
                 var list = (List<Product>) session.getAttribute(Constants.CART_ID);
                 list.add(productRepository.findById(id).get());
+                BathOrder bathOrder = bathOrderService.getByUser(principal.getName(),id);
+                bathOrder.getProductList().add(productRepository.findById(id).get());
+                bathOrderService.saveProduct(bathOrder);
+
             } catch (ClassCastException ignored) { }
         }
         return "redirect:/pro/cart";
