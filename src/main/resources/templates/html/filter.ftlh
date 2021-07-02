@@ -1,20 +1,27 @@
+<#--<#import "/spring.ftl" as spring>-->
+<#--<#import "main.ftlh" as main>-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body>
+<body style="background:aquamarine">
+<div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/main">Главная</a>
+    </nav>
+</div>
 
 <form action="/pro/filter" modelAttribute ="filter" method="get" >
-        <input type="text" name="name" placeholder="поиск  по имени " style="margin-bottom: 10px" />
+        <input class="navbar-brand" type="text" name="name" placeholder="поиск  по имени " style="margin-bottom: 10px" />
     <br>
-        <input type="text" name="description" placeholder="поиск по описанию " style="margin-bottom: 10px" />
+        <input class="navbar-brand" type="text" name="description" placeholder="поиск по описанию " style="margin-bottom: 10px" />
     <br>
-        <input type="number" name="minPrice" placeholder="цена от " style="margin-bottom: 10px">
-        <input type="number" name="maxPrice" placeholder="цена до " style="margin-bottom: 10px">
-    <button type="submit"> search</button>
+        <input class="navbar-brand" type="number" name="minPrice" placeholder="цена от " style="margin-bottom: 10px">
+        <input class="navbar-brand" type="number" name="maxPrice" placeholder="цена до " style="margin-bottom: 10px">
+    <button class="btn btn-outline-success my-2 my-sm-0 navbar-brand" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample" type="submit"> search</button>
 
 </form >
 

@@ -12,6 +12,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
+import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 import javax.sql.DataSource;
 
@@ -20,7 +25,7 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 @Data
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebMvcConfigurer {
     private final DataSource dataSource;
 
     @Bean
@@ -34,24 +39,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/forgot-password").permitAll()
-                .antMatchers("/resetPassword").permitAll()
-                .antMatchers("/register").permitAll()
+                .antMatchers("/orders/addReview").authenticated()
+                .antMatchers("/pro/cart").authenticated()
+                .antMatchers("/pro/remove").authenticated()
+                .antMatchers("/pro//cart/add").authenticated()
                 .anyRequest()
-                .authenticated()
+                .permitAll()
                 .and()
                 .formLogin()
                 .loginPage("/login").permitAll()
                 .failureUrl("/login?error=true")
-                .defaultSuccessUrl("/mainPage")
+                .defaultSuccessUrl("/main")
                 .and()
                 .logout()
                 .logoutUrl("/logout").permitAll()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout","POST"))
-//                .clearAuthentication(true)
-//                .invalidateHttpSession(true)
-//                .deleteCookies("JSESSIONID")
-                .logoutSuccessUrl("/login");
+                .clearAuthentication(true)
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID")
+                .logoutSuccessUrl("/main");
     }
 
     @Override
@@ -68,5 +74,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .usersByUsernameQuery(fetchUsersQuery)
                 .authoritiesByUsernameQuery(fetchRolesQuery)
                 .dataSource(dataSource);
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(localeChangeInterceptor());
+    }
+
+    private LocaleChangeInterceptor localeChangeInterceptor() {
+        var loc = new LocaleChangeInterceptor();
+        loc.setParamName("lang");
+        return loc;
+    }
+
+    @Bean
+    public LocaleResolver localeResolver() {
+        return new SessionLocaleResolver();
     }
 }

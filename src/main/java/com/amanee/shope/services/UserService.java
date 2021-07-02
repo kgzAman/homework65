@@ -42,19 +42,9 @@ public class UserService {
     }
 
     public User getByEmail(String email) {
-        var user = repository.findByEmail(email)
+        return repository.findByEmail(email)
                 .orElseThrow(NotFoundException::new);
-        return user;
     }
-
-    public void addUser(UserDTO userDTO){
-
-    }
-
-    public User getByName(String username) {
-        return repository.findByEmail(username).orElseThrow(NotFoundException::new);
-    }
-
 
     private String randomStringGenerator(){
         int leftLimit = 97; // letter 'a'

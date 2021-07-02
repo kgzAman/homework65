@@ -32,14 +32,13 @@ public class ProductController {
     private final ProductRepository productRepository;
     private final ModelMapper mapper= new ModelMapper();
 
-    @GetMapping("products")
-    public String getAllProducts(@PageableDefault(value = 2) Pageable pageable, Model model){
-        final Page<Product> products= productService.getProducts(pageable);
-        model.addAttribute("products",products.getContent());
-        model.addAttribute("pages",products.getPageable());
-        return "html/product";
-    }
 
+    @GetMapping("/product/{id}")
+    public String getProduct(@PathVariable Integer id,Model model){
+       Product product=productService.getById(id);
+       model.addAttribute("product",product);
+       return "html/product";
+    }
     @GetMapping("/filter")
     public String filter(Model model,@ModelAttribute(name = "filter")FilterDTO filter, Pageable pageable) {
        final Page<Product> products=this.productService.getWithFilter(filter,pageable);

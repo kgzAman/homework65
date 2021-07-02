@@ -30,7 +30,6 @@ public class UserController {
         if (!model.containsAttribute("dto")) {
             model.addAttribute("dto", new UserRegisterForm());
         }
-
         return "html/register";
     }
 
@@ -52,6 +51,8 @@ public class UserController {
     @GetMapping("/login")
     public String loginPage(@RequestParam(required = false, defaultValue = "false") Boolean error, Model model) {
         model.addAttribute("error", error);
+        if(error){
+        return "redirect:/register";}
         return "html/login";
     }
     @RequestMapping(value="/logout", method = RequestMethod.POST)

@@ -25,6 +25,7 @@ public class BathOrderService {
             products.add(productService.getById(id));
             BathOrder bathOrder1 = new BathOrder();
             bathOrder1.setUser(user);
+
             bathOrder1.setProductList(products);
             return bathOrder1;
         } else {
