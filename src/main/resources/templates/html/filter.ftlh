@@ -14,16 +14,16 @@
     </nav>
 </div>
 
-<#--<form action="/pro/filter" modelAttribute ="filter" method="get" >-->
-<#--        <input class="navbar-brand" type="text" name="name" placeholder="поиск  по имени " style="margin-bottom: 10px" />-->
-<#--    <br>-->
-<#--        <input class="navbar-brand" type="text" name="description" placeholder="поиск по описанию " style="margin-bottom: 10px" />-->
-<#--    <br>-->
-<#--        <input class="navbar-brand" type="number" name="minPrice" placeholder="цена от " style="margin-bottom: 10px">-->
-<#--        <input class="navbar-brand" type="number" name="maxPrice" placeholder="цена до " style="margin-bottom: 10px">-->
-<#--    <button class="btn btn-outline-success my-2 my-sm-0 navbar-brand" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample" type="submit"> search</button>-->
+<form action="/pro/filter" modelAttribute ="filter" method="get" >
+        <input class="navbar-brand" type="text" name="name" placeholder="поиск  по имени " style="margin-bottom: 10px" />
+    <br>
+        <input class="navbar-brand" type="text" name="description" placeholder="поиск по описанию " style="margin-bottom: 10px" />
+    <br>
+        <input class="navbar-brand" type="number" name="minPrice" placeholder="цена от " style="margin-bottom: 10px">
+        <input class="navbar-brand" type="number" name="maxPrice" placeholder="цена до " style="margin-bottom: 10px">
+    <button class="btn btn-outline-success my-2 my-sm-0 navbar-brand" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample" type="submit"> search</button>
 
-<#--</form >-->
+</form >
 
 
 <#if products??>
