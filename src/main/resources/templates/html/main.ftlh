@@ -23,16 +23,16 @@
                 <li class="nav-item">
                     <a class="btn btn-outline-success my-2 my-sm-0" data-toggle="collapse" href="/pro/cart" role="button" aria-expanded="false" aria-controls="collapseExample">Посмотреть карзину</a>
                 </li>
-<#--                <div class="container">-->
-<#--                    <div>-->
-<#--                        <form action="" method="get">-->
-<#--                            <label for="lang_select">-->
-<#--                                <@spring.message "label.language" />:-->
-<#--                            </label>-->
-<#--                            <select name="lang" id="lang_select">-->
-<#--                                <option value="ru_RU">Русский</option>-->
-<#--                                <option value="">Default</option>-->
-<#--                                <option value="en-US">American English</option>-->
+                <div class="container">
+                    <div>
+                        <form action="" method="get">
+                            <label for="lang_select">
+                                <@spring.message "label.language" />:
+                            </label>
+                            <select name="lang" id="lang_select">
+                                <option value="ru_RU">Русский</option>
+                                <option value="">Default</option>
+                                <option value="en-US">American English</option>
                                 <option value="ru">Русский</option>
                             </select>
                             <button type="submit">
