@@ -33,13 +33,13 @@
 <#--                                <option value="ru_RU">Русский</option>-->
 <#--                                <option value="">Default</option>-->
 <#--                                <option value="en-US">American English</option>-->
-<#--                                <option value="ru">Русский</option>-->
-<#--                            </select>-->
-<#--                            <button type="submit">-->
-<#--                                <@spring.message "button.language-change.text" />-->
-<#--                            </button>-->
-<#--                        </form>-->
-<#--                    </div>-->
+                                <option value="ru">Русский</option>
+                            </select>
+                            <button type="submit">
+                                <@spring.message "button.language-change.text" />
+                            </button>
+                        </form>
+                    </div>
                     <#if user??>
                         <div id="username" style="margin-left: auto;color: #f8fafb">User: ${user.name}</div>
                         <li class="nav-item" style="margin-left: auto" >
